@@ -9,14 +9,14 @@ import { Link } from "react-router-dom";
 
 function Post_all() {
 
-    const { localUser, filterComment, filterLikes } = useContext(myContext)
+    const { localUser, filterComment, filterLikes, url } = useContext(myContext)
     const [userPosts, setuserPosts] = useState([])
     const [message, setMessage] = useState([])
 
     const reverse = [...userPosts].reverse()
 
     function deletePost(id) {
-        fetch(`http://localhost:4001/delete_post/${id}`, {
+        fetch(`${url}/delete_post/${id}`, {
             method: "get"
         })
             .then((resp) => resp.json())
@@ -26,7 +26,7 @@ function Post_all() {
             })
     }
 
-    fetch("http://localhost:4001/user_posts", {
+    fetch("${url}/user_posts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ "user_id": localUser._id })
@@ -45,7 +45,7 @@ function Post_all() {
                                 <div className="post_box">
                                     <div className="post_img post_relative">
                                         <Link to={`/one_post/${data._id}`}>
-                                            <img src={`http://localhost:4001/uploads/${data.image}`} alt="" />
+                                            <img src={`${url}/uploads/${data.image}`} alt="" />
                                         </Link>
                                         <div className="action_btn">
                                             <Link to={`/edit_post/${data._id}`}><span><IoPencilSharp /></span></Link>

@@ -9,11 +9,11 @@ import { myContext } from "../myContext";
 import { Link } from "react-router-dom";
 function AdminPosts() {
 
-    const { post, filterComment, filterLikes, setAdModal, reverse } = useContext(myContext)
+    const { post, filterComment, filterLikes, setAdModal, reverse, url } = useContext(myContext)
     const [message, setMessage] = useState([])
 
     function deletePost(id) {
-        fetch(`http://localhost:4001/delete_post/${id}`, {
+        fetch(`${url}/delete_post/${id}`, {
             method: "get"
         })
             .then((resp) => resp.json())
@@ -80,7 +80,7 @@ function AdminPosts() {
 
                                                 <div>
                                                     <Link to={`/one_post/${data._id}`}>
-                                                        <img src={`http://localhost:4001/uploads/${data.image}`} alt="" />
+                                                        <img src={`${url}/uploads/${data.image}`} alt="" />
                                                     </Link>
                                                     <div className="action_btn">
                                                         <span><IoPencilSharp /></span>

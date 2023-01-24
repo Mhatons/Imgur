@@ -6,7 +6,7 @@ import { useContext } from "react"
 import { myContext } from "../myContext"
 function AdminNav() {
 
-    const { localUser, clearItem } = useContext(myContext)
+    const { localUser, clearItem, url } = useContext(myContext)
 
     let toHome = useNavigate()
 
@@ -36,7 +36,7 @@ function AdminNav() {
                     <span>{localUser.user_name}</span>
                     <div className="dropdown dropbtn">
                         <div style={{ color: "#B0BEC4", fontWeight: "700", fontSize: "19px", cursor: "pointer" }} data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src={`http://localhost:4001/uploads/${localUser.user_image}`} alt="" />
+                            <img src={`${url}/uploads/${localUser.user_image}`} alt="" />
                         </div>
                         <div>
                             <ul className="dropdown-menu dropdown-menu-dark">

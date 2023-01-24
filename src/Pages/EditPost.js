@@ -10,19 +10,19 @@ function EditPost() {
     const [postEdit, setPostEdit] = useState([])
     const navigate = useNavigate()
 
-    const { localUser } = useContext(myContext)
+    const { localUser, url } = useContext(myContext)
 
     const [postValue, setPostValue] = useState({ body: "", image: "" })
     const [editBody, setEditBody] = useState(false)
 
-    fetch(`http://localhost:4001/post/${id}`)
+    fetch(`${url}/post/${id}`)
         .then((resp) => resp.json())
         .then((data) => {
             setPostEdit(data)
         })
 
     function deletePost(id) {
-        fetch(`http://localhost:4001/delete_post/${id}`, {
+        fetch(`${url}/delete_post/${id}`, {
             method: "get"
         })
             .then((resp) => resp.json())
@@ -32,7 +32,7 @@ function EditPost() {
     }
 
     function updatePost() {
-        fetch("http://localhost:4001/update_post/", {
+        fetch(`${url}/update_post/`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -74,7 +74,7 @@ function EditPost() {
                         </div>
                         <div className="post_final_img_header">
                             <div className="post_final_img_body">
-                                <img src={`http://localhost:4001/uploads/${postEdit.image}`} alt="" />
+                                <img src={`${url}/uploads/${postEdit.image}`} alt="" />
                             </div>
                             <div className="post_final_img_inner">
                                 <button className="btn btn-secondary">Copy link</button>

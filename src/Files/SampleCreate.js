@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 
 function SampleCreate() {
 
-    const { setAdModal, postDetails, setPostDetails, category, localUser } = useContext(myContext)
+    const { setAdModal, postDetails, setPostDetails, category, localUser, url } = useContext(myContext)
     const [check, setCheck] = useState(false)
     const navigate = useNavigate()
 
@@ -15,7 +15,7 @@ function SampleCreate() {
             setCheck(true)
         }
         else {
-            fetch("http://localhost:4001/post", {
+            fetch(`${url}/post`, {
                 method: "POST",
                 body: myform
             })

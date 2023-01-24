@@ -5,6 +5,7 @@ import { useState } from "react"
 export const myContext = createContext()
 
 function PostProvider({ children }) {
+    const url = "https://imgurapi.cyclic.app/"
 
     function filterComment(postId) {
         const myComment = comments.filter(({ post_id }) => post_id === postId)
@@ -65,40 +66,40 @@ function PostProvider({ children }) {
         }
 
 
-        fetch("http://localhost:4001/posts")
+        fetch(`${url}/posts`)
             .then((resp) => resp.json())
             .then((data) => {
                 setPost(data)
             })
 
-        fetch("http://localhost:4001/post_category")
+        fetch(`${url}/post_category`)
             .then((resp) => resp.json())
             .then((data) => {
                 setCategory(data)
             })
 
 
-        fetch("http://localhost:4001/users")
+        fetch(`${url}/users`)
             .then((resp) => resp.json())
             .then((data) => {
                 setUsers(data)
             })
 
 
-        fetch("http://localhost:4001/comments")
+        fetch(`${url}/comments`)
             .then((resp) => resp.json())
             .then((data) => { 
                 setComments(data)
             })
 
 
-        fetch("http://localhost:4001/likes")
+        fetch(`${url}/likes`)
             .then((resp) => resp.json())
             .then((data) => {
                 setLikes(data)
             })
 
-        fetch("http://localhost:4001/roles")
+        fetch(`${url}/roles`)
         .then((resp) => resp.json())
         .then((data) => {
             setRoles(data)
@@ -109,6 +110,7 @@ function PostProvider({ children }) {
 
 
     const exportedDate = {
+        url,
         users,
         setUsers,
         reverseCategory,

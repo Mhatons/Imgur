@@ -3,9 +3,9 @@ import avatar from "../Image/BIQmKpw_d.png"
 import { myContext } from "../myContext"
 function PostDetails() {
 
-    const {followers, localUser, setFollowers} = useContext(myContext)
+    const {followers, localUser, setFollowers, url} = useContext(myContext)
 
-    fetch(`http://localhost:4001/follow_user/${localUser._id}`)
+    fetch(`${url}/follow_user/${localUser._id}`)
         .then((resp) => resp.json())
         .then((data) => {
             setFollowers(data)
@@ -16,7 +16,7 @@ function PostDetails() {
             {
                 localUser && <div className="post_details">
                     <div>
-                        <img src={`http://localhost:4001/uploads/${localUser.user_image}`} alt="" className="profile_photo"/>
+                        <img src={`${url}/uploads/${localUser.user_image}`} alt="" className="profile_photo"/>
                     </div>
                     <div>
                         <div className="profile_name">{localUser.user_name}</div>

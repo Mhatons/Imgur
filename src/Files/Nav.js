@@ -12,7 +12,7 @@ import SampleCreate from "./SampleCreate"
 
 function Nav() {
 
-    const { login, clearItem, adminLog, setAdminLog, setSampleForm } = useContext(myContext)
+    const { login, clearItem, adminLog, setAdminLog, setSampleForm, url } = useContext(myContext)
     let user = JSON.parse(localStorage.getItem("user"))
 
     const toHome = useNavigate()
@@ -109,7 +109,7 @@ function Nav() {
                                     <div className="dropdown dropbtn">
                                         {
                                             user && <div style={{ color: "#B0BEC4", fontWeight: "700", fontSize: "19px" }} data-bs-toggle="dropdown" aria-expanded="false">
-                                                <img src={`http://localhost:4001/uploads/${user.user_image}`} alt="" style={{ borderRadius: "50%", width: "40px", cursor: "pointer" }} />
+                                                <img src={`${url}/uploads/${user.user_image}`} alt="" style={{ borderRadius: "50%", width: "40px", cursor: "pointer" }} />
                                             </div>
                                         }
                                         <div>
@@ -150,7 +150,7 @@ function Nav() {
                             <div className="dropdown dropbtn">
                                 {
                                     user && <div style={{ color: "#B0BEC4", fontWeight: "700", fontSize: "19px" }} data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src={`http://localhost:4001/uploads/${user.user_image}`} alt="" style={{ borderRadius: "50%", width: "40px", cursor: "pointer" }} />
+                                        <img src={`${url}/uploads/${user.user_image}`} alt="" style={{ borderRadius: "50%", width: "40px", cursor: "pointer" }} />
                                     </div>
                                 }
                                 <div>

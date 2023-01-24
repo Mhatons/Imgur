@@ -7,7 +7,7 @@ import { myContext } from "../myContext";
 import { Link } from "react-router-dom";
 
 function PostContents() {
-    const { post, filterComment, filterLikes, reverse } = useContext(myContext)
+    const { post, filterComment, filterLikes, reverse, url } = useContext(myContext)
     const [viewChange, steViewChange] = useState(false)
 
 
@@ -65,7 +65,7 @@ function PostContents() {
                                             <div className="post_img">
 
                                                 <Link to={`/one_post/${data._id}`}>
-                                                    <img src={`http://localhost:4001/uploads/${data.image}`} alt="" />
+                                                    <img src={`${url}/uploads/${data.image}`} alt="" />
                                                 </Link>
                                             </div>
                                             <div className="post_content">

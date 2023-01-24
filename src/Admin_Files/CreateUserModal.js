@@ -7,7 +7,7 @@ function CreateUserModal() {
 
 
     const [check, setCheck] = useState(false)
-    const { roles, setUsermodal, usermodal, setUser_details, user_details, userChanger, setUserChanger } = useContext(myContext)
+    const { roles, setUsermodal, usermodal, setUser_details, user_details, userChanger, setUserChanger, url } = useContext(myContext)
 
 
     // fetch(`http://localhost:4001/users/${id}`)
@@ -22,7 +22,7 @@ function CreateUserModal() {
             setCheck(true)
         }
         else {
-            fetch("http://localhost:4001/create_user", {
+            fetch("url/create_user", {
                 method: "POST",
                 body: userForm
             })
@@ -40,7 +40,7 @@ function CreateUserModal() {
             setCheck(true)
         }
         else {
-            fetch("http://localhost:4001/update_user", {
+            fetch("url/update_user", {
                 method: "PUT",
                 body: userForm
             })

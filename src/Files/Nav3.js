@@ -5,7 +5,7 @@ import { myContext } from "../myContext"
 function Nav3() {
 
 
-    const { localUser, clearItem } = useContext(myContext)
+    const { localUser, clearItem, url } = useContext(myContext)
     let toHome = useNavigate()
 
     function clrUser() {
@@ -31,7 +31,7 @@ function Nav3() {
                         <div className="dropdown dropbtn">
                             {
                                 <div style={{ color: "#B0BEC4", fontWeight: "700", fontSize: "19px" }} data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src={`http://localhost:4001/uploads/${localUser.user_image}`} alt="" style={{ borderRadius: "50%", width: "40px", cursor: "pointer" }} />
+                                    <img src={`${url}/uploads/${localUser.user_image}`} alt="" style={{ borderRadius: "50%", width: "40px", cursor: "pointer" }} />
                                 </div>
                             }
                             <div>

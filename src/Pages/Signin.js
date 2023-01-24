@@ -15,7 +15,7 @@ function Signin() {
 
     const [userDetails, setuserDetails] = useState({ user_email: "", password: "" })
 
-    const { setLogin, setAdminLog } = useContext(myContext)
+    const { setLogin, setAdminLog, url } = useContext(myContext)
 
     const [validate, setValidate] = useState(false);
     const navigate = useNavigate()
@@ -32,7 +32,7 @@ function Signin() {
 
 
     function handleLogin() {
-        fetch("http://localhost:4001/user_login",
+        fetch(`${url}/user_login`,
             {
                 method: "post",
                 headers: { "Content-Type": "application/json" },

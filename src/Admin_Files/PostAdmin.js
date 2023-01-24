@@ -5,7 +5,7 @@ import { myContext } from "../myContext"
 
 function PostAdmin() {
 
-    const { setAdModal, postDetails, setPostDetails, category, localUser } = useContext(myContext)
+    const { setAdModal, postDetails, setPostDetails, category, localUser, url } = useContext(myContext)
     const [check, setCheck] = useState(false)
 
     const validate = () => {
@@ -13,7 +13,7 @@ function PostAdmin() {
             setCheck(true)
         }
         else{
-            fetch("http://localhost:4001/post", {
+            fetch(`${url}/post`, {
                 method: "POST",
                 body: myform
             })

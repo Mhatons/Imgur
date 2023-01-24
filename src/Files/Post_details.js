@@ -12,7 +12,7 @@ function Post_details() {
 
     const { id } = useParams()
     const [one_post, setOne_post] = useState([])
-    const { post, login, localUser } = useContext(myContext)
+    const { post, login, localUser, url } = useContext(myContext)
     const [postLikes, setpostLikes] = useState([])
 
     // console.log(comments[0].user_id)
@@ -39,12 +39,12 @@ function Post_details() {
 
     function allRenders() {
 
-        fetch(`http://localhost:4001/post/${id}`)
+        fetch(`${url}/post/${id}`)
             .then((resp) => resp.json())
             .then((data) => {
                 setOne_post(data)
 
-                fetch(`http://localhost:4001/users/${data.user_id}`)
+                fetch(`${url}/users/${data.user_id}`)
                     .then((resp) => resp.json())
                     .then((data) => {
                         setPoster(data)
@@ -70,14 +70,14 @@ function Post_details() {
         //         console.log(data)
         //     })
 
-        fetch(`http://localhost:4001/comment_post/${id}`)
+        fetch(`${url}/comment_post/${id}`)
             .then((resp) => resp.json())
             .then((data) => {
                 setCommentDetails(data)
             })
 
 
-        fetch(`http://localhost:4001/post_likes/${id}`)
+        fetch(`${url}/post_likes/${id}`)
             .then((resp) => resp.json())
             .then((data) => {
                 setpostLikes(data)
@@ -98,7 +98,7 @@ function Post_details() {
 
 
     function deleteComment(id) {
-        fetch(`http://localhost:4001/delete_comment/${id}`, {
+        fetch(`${url}/delete_comment/${id}`, {
             method: "get"
         }).then((resp) => resp.json)
             .then((data) => {
@@ -109,7 +109,7 @@ function Post_details() {
 
 
     function getLikes() {
-        fetch("http://localhost:4001/likes", {
+        fetch(`${url}/likes`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -127,7 +127,7 @@ function Post_details() {
 
 
     function createComment() {
-        fetch("http://localhost:4001/comments", {
+        fetch(`${url}/comments`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -240,7 +240,7 @@ function Post_details() {
                             </div>
                             <div className="one_post_user_details pb-3">
                                 <div>
-                                    <Link to={poster._id === localUser._id ? "/post" : `/profile/${poster._id}`}><img src={`http://localhost:4001/uploads/${poster.user_image}`} alt="" /></Link>
+                                    <Link to={poster._id === localUser._id ? "/post" : `/profile/${poster._id}`}><img src={`${url}/uploads/${poster.user_image}`} alt="" /></Link>
                                 </div>
                                 <div>
                                     {/* <div style={{ color: "#1BA769" }}>{one_post.user_id}</div> */}
@@ -252,7 +252,7 @@ function Post_details() {
                             </div>
                         </section>
                         <div className="post_final_img_header">
-                            <img src={`http://localhost:4001/uploads/${one_post.image}`} alt="" />
+                            <img src={`${url}/uploads/${one_post.image}`} alt="" />
                             <div className="post_final_img_inner">
                                 <button className="btn btn-secondary">Copy link</button>
                                 <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">...</button>
@@ -338,7 +338,7 @@ function Post_details() {
                                             <div className="comment_body">
                                                 <div>
                                                     <div className="comment_body_sub">
-                                                        <img src={`http://localhost:4001/uploads/${data.user_image}`} alt="" />
+                                                        <img src={`${url}/uploads/${data.user_image}`} alt="" />
                                                         <Link to={data.user_id === localUser._id ? "/post" : `/profile/${data.user_id}`}
                                                             style={{ color: "#1BA769", textDecoration: "none" }}><div>  {data.user_name} </div></Link>
 
@@ -421,7 +421,7 @@ function Post_details() {
                                             return (
                                                 <div className="viral_posts">
                                                     <div>
-                                                        <img src={`http://localhost:4001/uploads/${data.image}`} alt="" />
+                                                        <img src={`${url}/uploads/${data.image}`} alt="" />
                                                     </div>
                                                     <p>
                                                         {data.body}
