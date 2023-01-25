@@ -53,6 +53,7 @@ function Reg() {
     const postUser = () => {
         fetch(`${url}/create_user`, {
             method: "POST",
+            headers: {"Content-Type": "application/json"},
             body: formData
 
         })
