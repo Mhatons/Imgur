@@ -9,7 +9,7 @@ import { myContext } from "../myContext"
 function Reg() {
 
     // const { } = useContext(myContext)
-    const { verify, setVerify, user_details, setUser_details, users } = useContext(myContext)
+    const { verify, setVerify, user_details, setUser_details, users, url } = useContext(myContext)
     const [verifyPass, setverifyPass] = useState(false)
 
 
@@ -51,7 +51,7 @@ function Reg() {
     let mydata = ""
 
     const postUser = () => {
-        fetch("http://localhost:4001/create_user", {
+        fetch(`${url}/create_user`, {
             method: "POST",
             body: formData
 
