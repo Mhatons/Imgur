@@ -6,7 +6,7 @@ import { IoTrash, IoPencilSharp, IoClose, IoWarningSharp, IoHelpCircle, IoThumbs
 
 function ManageCategory() {
 
-    const { category, reverseCategory } = useContext(myContext)
+    const { category, reverseCategory, url } = useContext(myContext)
     const [addCat, setAddCat] = useState("")
     const [value, setValue] = useState(false)
 
@@ -23,7 +23,7 @@ function ManageCategory() {
         if (addCat === "") {
             setValue(true)
         } else {
-            fetch("http://localhost:4001/post_category", {
+            fetch(`${url}/post_category`, {
                 method: "post",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -39,7 +39,7 @@ function ManageCategory() {
     }
 
     function removeCategory(id) {
-        fetch(`http://localhost:4001/delete_category/${id}`, {
+        fetch(`${url}/delete_category/${id}`, {
             method: "get"
         }).then((resp) => resp.json())
             .then((data) => {
@@ -48,7 +48,7 @@ function ManageCategory() {
     }
 
     function categoryName(id) {
-        fetch(`http://localhost:4001/one_category/${id}`)
+        fetch(`${url}/one_category/${id}`)
             .then((resp) => resp.json())
             .then((data) => {
                 setCatName(data)
@@ -60,7 +60,7 @@ function ManageCategory() {
             setValue(true)
         }
         else{
-            fetch("http://localhost:4001/update_category", {
+            fetch(`${url}/update_category`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

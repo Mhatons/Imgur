@@ -3,7 +3,7 @@ import { useContext } from "react"
 import { myContext } from "../myContext"
 function AdminUsers() {
 
-    const { users, setUsers, reverseUsers } = useContext(myContext)
+    const { users, setUsers, reverseUsers, url } = useContext(myContext)
 
     return (
         <div className="adminPage_users">
@@ -28,7 +28,7 @@ function AdminUsers() {
                                             <tr className="">
                                                 <td><b>{data.user_name}</b></td>
                                                 <td><i style={{color: "brown"}}>{data.user_email}</i></td>
-                                                <td><img src={`http://localhost:4001/uploads/${data.user_image}`} alt="" style={{ width: "25px", borderRadius: "50%" }} /></td>
+                                                <td><img src={`${url}/uploads/${data.user_image}`} alt="" style={{ width: "25px", borderRadius: "50%" }} /></td>
                                             </tr>
                                         )
                                     })

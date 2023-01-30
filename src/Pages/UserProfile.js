@@ -15,7 +15,7 @@ function UserProfile() {
 
     const { id } = useParams()
 
-    const { localUser, filterComment, filterLikes, login, followers, setFollowers } = useContext(myContext)
+    const { localUser, filterComment, filterLikes, login, followers, setFollowers, url } = useContext(myContext)
     const [user, setUser] = useState([])
     const [myPosts, setMyPosts] = useState([])
 
@@ -24,14 +24,14 @@ function UserProfile() {
 
     const reverse = [...myPosts].reverse()
 
-    fetch(`http://localhost:4001/users/${id}`)
+    fetch(`${url}/users/${id}`)
         .then((resp) => resp.json())
         .then((data) => {
             setUser(data)
         })
 
     function postFollow() {
-        fetch("http://localhost:4001/follow", {
+        fetch(`${url}/follow`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -49,13 +49,13 @@ function UserProfile() {
             })
     }
 
-    fetch(`http://localhost:4001/follow_user/${id}`)
+    fetch(`${url}/follow_user/${id}`)
         .then((resp) => resp.json())
         .then((data) => {
             setFollowers(data)
         })
 
-    fetch("http://localhost:4001/user_posts", {
+    fetch(`${url}/user_posts`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -76,7 +76,7 @@ function UserProfile() {
                 <div>
                     <div className="post_details">
                         <div>
-                            <img src={`http://localhost:4001/uploads/${user.user_image}`} className="profile_photo" alt="" />
+                            <img src={`${url}/uploads/${user.user_image}`} className="profile_photo" alt="" />
                         </div>
                         <div>
                             <div className="profile_name">{user.user_name}</div>

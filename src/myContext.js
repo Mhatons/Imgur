@@ -3,6 +3,7 @@ import { createContext } from "react"
 import { useState } from "react"
 
 export const myContext = createContext()
+const url = "https://imgurapi.cyclic.app"
 
 function PostProvider({ children }) {
 
@@ -155,7 +156,8 @@ function PostProvider({ children }) {
         modal,
         setModal,
         postImage,
-        setPostImage
+        setPostImage,
+        url
 
     }
 

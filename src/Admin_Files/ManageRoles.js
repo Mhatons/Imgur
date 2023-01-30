@@ -5,7 +5,7 @@ import { IoTrash, IoPencilSharp, IoClose, IoWarningSharp, IoHelpCircle, IoThumbs
 import { useNavigate } from "react-router-dom"
 
 function ManageRoles() {
-    const { roles, reverseRoles } = useContext(myContext)
+    const { roles, reverseRoles, url } = useContext(myContext)
     const [role, setRole] = useState("")
     const navigate = useNavigate()
 
@@ -27,7 +27,7 @@ function ManageRoles() {
             setValue(true)
         }
         else {
-            fetch("http://localhost:4001/roles", {
+            fetch(`${url}/roles`, {
                 method: "post",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -45,7 +45,7 @@ function ManageRoles() {
     }
 
     function findRole(id) {
-        fetch(`http://localhost:4001/role/${id}`)
+        fetch(`${url}/role/${id}`)
             .then((resp) => resp.json())
             .then((data) => {
                 setRoleName(data)
@@ -53,7 +53,7 @@ function ManageRoles() {
     }
 
     function deleteRole(id) {
-        fetch(`http://localhost:4001/delete_roles/${id}`, {
+        fetch(`${url}/delete_roles/${id}`, {
             method: "get",
         }).then((resp) => resp.json())
             .then((data) => {
@@ -66,7 +66,7 @@ function ManageRoles() {
             setValue(true)
         }
         else {
-            fetch("http://localhost:4001/update_roles", {
+            fetch(`${url}/update_roles`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

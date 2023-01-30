@@ -10,7 +10,7 @@ import CreateUserModal from "../Admin_Files/CreateUserModal";
 
 function ManageUsers() {
 
-    const { users, setUsermodal, setUserChanger, roles, usermodal, setUser_details, user_details, localUser, reverseUsers } = useContext(myContext)
+    const { users, setUsermodal, setUserChanger, roles, usermodal, setUser_details, user_details, localUser, reverseUsers, url } = useContext(myContext)
     const [check, setCheck] = useState(false)
     const [message, setMessage] = useState([])
 
@@ -18,7 +18,7 @@ function ManageUsers() {
 
 
     function deleteUser(id) {
-        fetch(`http://localhost:4001/delete_user/${id}`, {
+        fetch(`${url}/delete_user/${id}`, {
             method: "get"
         })
             .then((resp) => resp.json())
@@ -33,7 +33,7 @@ function ManageUsers() {
             setCheck(true)
         }
         else {
-            fetch("http://localhost:4001/update_user", {
+            fetch(`${url}/update_user`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: (
@@ -114,7 +114,7 @@ function ManageUsers() {
                                     <div className="post_box" key={i}>
                                         <div className="post_img post_relative">
                                             <Link to={`/profile/${data._id}`}>
-                                                <img src={`http://localhost:4001/uploads/${data.user_image}`} alt="" />
+                                                <img src={`${url}/uploads/${data.user_image}`} alt="" />
                                             </Link>
 
                                             <div className="action_btn">
