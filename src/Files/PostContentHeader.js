@@ -10,7 +10,7 @@ function PostContentHeader() {
                 </div>
                 <div>
                     <div>
-                        <div className="d-flx" style={{ gap: "15px" }}>
+                        <div className="d-flx header_newest" style={{ gap: "15px" }}>
                             <div className="dropdown">
                                 <button className="btn dropdown-toggle" style={{ color: "#B0BEC4", fontWeight: "700", fontSize: "15px" }} type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     NEWEST

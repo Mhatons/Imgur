@@ -80,7 +80,7 @@ function UserProfile() {
                         </div>
                         <div>
                             <div className="profile_name">{user.user_name}</div>
-                            <div style={{ display: "flex", alignItems: "center", gap: "1em" }}>
+                            <div className="post_follow_details">
                                 <p style={{ fontSize: "13px", fontWeight: "650" }}>1 PTS . NEUTRAL</p>
                                 <p className="follow">
                                     <b onClick={() => login ? postFollow() : setFollowErr(true)}> {!follow ? "Follow" : "Unfollow"} </b>
@@ -114,7 +114,12 @@ function UserProfile() {
                     </div>
                 </div>
                 <div>
-                    <PostHeaders />
+                    <div className="post_headers2">
+                        <div>POSTS</div>
+                        <div>FAVOURITES</div>
+                        <div>COMMENTS</div>
+                        <div>ABOUT</div>
+                    </div>
                 </div>
             </div>
             <div className="post_bg2">

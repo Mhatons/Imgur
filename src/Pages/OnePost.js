@@ -10,7 +10,11 @@ function OnePost() {
             <section className="onepost"></section>
             <Nav />
             <Post_details />
-            <PostContents />
+            <div className="postContent_reduce_bg" style={{ backgroundColor: "#2E3035" }}>
+                <div className="postContent_reduce">
+                    <PostContents />
+                </div>
+            </div>
         </div>
     )
 }

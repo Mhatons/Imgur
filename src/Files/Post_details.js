@@ -234,7 +234,7 @@ function Post_details() {
 
 
                     <div className="post_final1">
-                        <section style={{ paddingLeft: "4em" }}>
+                        <section className="posterUser_details">
                             <div className="pb-3" style={{ color: "#f5f5f5", fontSize: "25px" }}>
                                 <b>{one_post.title}</b>
                             </div>

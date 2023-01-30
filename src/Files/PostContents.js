@@ -17,7 +17,7 @@ function PostContents() {
                 <div className="posted_items_sub">
                     <div className="d-flx">
                         <div>
-                            <div className="dropdown dropbtn">
+                            <div className="dropdown dropbtn post_filter">
                                 <button className="btn dropdown-toggle" style={{ color: "#B0BEC4", fontWeight: "700", fontSize: "19px" }} type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     MOST VIRAL
                                 </button>
@@ -29,7 +29,7 @@ function PostContents() {
                             </div>
                         </div>
                         <div>
-                            <div className="d-flx" style={{ gap: "15px" }}>
+                            <div className="d-flx post_filter" style={{ gap: "15px" }}>
                                 <div className="dropdown">
                                     <button className="btn dropdown-toggle" style={{ color: "#B0BEC4", fontWeight: "700", fontSize: "19px" }} type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         NEWEST

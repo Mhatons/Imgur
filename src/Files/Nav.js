@@ -58,7 +58,7 @@ function Nav() {
 
                     {
                         !login ? (
-                            <div><img src={logoImg2} alt="" style={{ height: "70px" }} /></div>
+                            <div className="nav_image2"><img src={logoImg2} alt="" style={{ height: "70px" }} /></div>
                         ) : null
                     }
 
